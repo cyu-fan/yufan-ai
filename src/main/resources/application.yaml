@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: yufan-ai
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      #模型有很多种，这里配置的是对话模型
+      chat:
+        #model: deepseek-r1:1.5b,
+        model: qwen3:4b
+    openai:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode
+      api-key: sk-6ddf5b9980054d4e8e7a83d9103bafe8
+      chat:
+        options:
+          model: qwen-turbo
+      #向量模型
+      embedding:
+        options:
+          model: text-embedding-v3
+          #转化的向量维度是1024
+          dimensions: 1024
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yufan?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowPublicKeyRetrieval=true&allowMultiQueries=true&useServerPrepStmts=false
+    username: root
+    password: 123456
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
+    com.yufan.ai: debug
